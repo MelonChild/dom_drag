@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .kwc-player-course {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            text-align: center;
+            background-color: #111;
+        }
+        
+        .kwc-data-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #paint_box {
+            top: 72px;
+            position: absolute;
+            width: 100%;
+            height: 80%;
+            background-color: #1b1c1d;
+            overflow: hidden;
+            box-sizing: content-box;
+        }
+        
+        .panel-stack {
+            background: lightgoldenrodyellow;
+            width: 300px;
+            height: 400px;
+        }
+        
+        .panel-stack-item-content {
+            color: #2c3e50;
+            text-align: center;
+            background-color: #18bc9c;
+        }
+        
+        .panel-item {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+        }
+        
+        .panel-item-drag {
+            cursor: move;
+            background-color: #bdb4b4;
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script src="drag.js"></script>
+</head>
+
+<body>
+    <div class="kwc-player-course">
+        <div class="kwc-data-box" style="height: 760.902px; width: 100%; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto;">
+            <div class="kwc-data-inner">
+                <div id="paint_box">
+
+                    <div class="panel-stack">
+                        <div class="panel-item">
+                            <div class="panel-item-title">
+                                <div class="panel-item-drag">1</div>
+                            </div>
+                            <div class="panel-item-content">1</div>
+                        </div>
+                        <div class="panel-item">
+                            <div class="panel-item-title">
+                                <div class="panel-item-drag">2</div>
+                            </div>
+                            <div class="panel-item-content">2</div>
+                        </div>
+                    </div>
+                    <button class="btn-add" onclick="appendHtml()">新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var grid = PanelStack.init({
+            alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                navigator.userAgent
+            ),
+            resizable: {
+                handles: 'e, se, s, sw, w'
+            },
+            removable: '#trash',
+            removeTimeout: 100,
+            acceptWidgets: '.newWidget'
+        });
+
+        function appendHtml() {
+            grid.addItem();
+        }
+
+
+        // grid.on('added removed change', function(e, items) {
+        //     var str = '';
+        //     items.forEach(function(item) {
+        //         str += ' (x,y)=' + item.x + ',' + item.y;
+        //     });
+        //     console.log(e.type + ' ' + items.length + ' items:' + str);
+        // });
+    </script>
+</body>
+
+</html>
